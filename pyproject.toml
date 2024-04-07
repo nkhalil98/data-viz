@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "data-viz"
+version = "0.1.0"
+description = "Data Visualization Projects"
+authors = ["Nabil Khalil <nabilamirkhalil@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+matplotlib = "^3.8.4"
+pandas = "^2.2.1"
+plotly = "^5.20.0"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
