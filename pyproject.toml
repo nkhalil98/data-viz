@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Data Visualization Projects"
 authors = ["Nabil Khalil <nabilamirkhalil@gmail.com>"]
 readme = "README.md"
+packages = [{ include = "aliens", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
