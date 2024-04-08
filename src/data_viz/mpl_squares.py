@@ -1,5 +1,8 @@
 import matplotlib.pyplot as plt
 
+# Styling
+plt.style.use('ggplot')
+
 input_values = [1, 2, 3, 4, 5]  # x-values
 squares = [1, 4, 9, 16, 25]  # y-values
 
