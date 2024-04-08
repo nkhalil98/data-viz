@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 # Styling
-plt.style.use('ggplot')
+plt.style.use("ggplot")
 
 input_values = [1, 2, 3, 4, 5]  # x-values
 squares = [1, 4, 9, 16, 25]  # y-values
@@ -15,6 +15,6 @@ ax.set_xlabel("Value", fontsize=14)
 ax.set_ylabel("Value Squared", fontsize=14)
 
 # Set size of tick labels.
-ax.tick_params(axis='both', labelsize=14)
+ax.tick_params(axis="both", labelsize=14)
 
 plt.show()
