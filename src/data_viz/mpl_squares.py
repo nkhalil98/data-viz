@@ -3,18 +3,19 @@ import matplotlib.pyplot as plt
 # Styling
 plt.style.use("ggplot")
 
-input_values = [1, 2, 3, 4, 5]  # x-values
-squares = [1, 4, 9, 16, 25]  # y-values
+# Data
+X = [1, 2, 3, 4, 5]  # x-values
+Y = [1, 4, 9, 16, 25]  # y-values
 
+# Initialize the plot and plot the data
 fig, ax = plt.subplots()
-ax.plot(input_values, squares, linewidth=3)
+ax.plot(X, Y, linewidth=3)  # all the magic happens here
 
-# Set chart title and label axes.
-ax.set_title("Square Numbers", fontsize=24)
-ax.set_xlabel("Value", fontsize=14)
-ax.set_ylabel("Value Squared", fontsize=14)
+# Customize the plot
+ax.set_title("Square Numbers", fontsize=24)  # title
+ax.set_xlabel("Value", fontsize=14)  # x-axis label
+ax.set_ylabel("Value Squared", fontsize=14)  # y-axis label
+ax.tick_params(axis="both", labelsize=14)  # tick labels size
 
-# Set size of tick labels.
-ax.tick_params(axis="both", labelsize=14)
-
+# Display the plot
 plt.show()

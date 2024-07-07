@@ -2,31 +2,32 @@ import matplotlib.pyplot as plt
 
 from random_walk import RandomWalk
 
-# Make a random walk, and plot the points.
-rw = RandomWalk()
-rw.fill_walk()
-
 # Styling
 plt.style.use("seaborn-v0_8-darkgrid")
 
-fig, ax = plt.subplots(figsize=(16, 10), dpi=128)
-point_numbers = range(rw.num_points)
+# Random walk data
+rw = RandomWalk()
+rw.fill_walk()
+
+# Initialize the plot and plot the data
+fig, ax = plt.subplots(figsize=(10, 6), dpi=128)
+point_numbers = range(rw.n)
 ax.scatter(
-    rw.x_values,
-    rw.y_values,
+    rw.X,
+    rw.Y,
     s=10,
     c=point_numbers,
     cmap=plt.cm.Blues,
-    edgecolors="none",
+    edgecolors=None,
 )
-ax.set_aspect("equal")
 
-# Emphasize the first and last points.
-ax.scatter(0, 0, c="green", edgecolors="none", s=50)
-ax.scatter(rw.x_values[-1], rw.y_values[-1], c="red", edgecolors="none", s=50)
+# Emphasize the first and last points
+ax.scatter(0, 0, c="green", edgecolors=None, s=50)
+ax.scatter(rw.X[-1], rw.Y[-1], c="red", edgecolors=None, s=50)
 
-# Remove the axes.
-ax.get_xaxis().set_visible(False)
-ax.get_yaxis().set_visible(False)
+# Customize the plot
+ax.set_aspect("equal")  # equal aspect ratio
+ax.get_xaxis().set_visible(False)  # hide x-axis
+ax.get_yaxis().set_visible(False)  # hide y-axis
 
 plt.show()
