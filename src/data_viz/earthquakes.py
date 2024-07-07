@@ -5,32 +5,19 @@ import plotly.express as px
 
 path = Path(__file__).parent / "assets" / "eq_data_1_day_m1.geojson"
 
-
-def format_json(path: Path, new_path: Path, indent: int = 4) -> str:
-    contents = path.read_text(encoding="utf-8")
-    data = json.loads(contents)
-    formatted_data = json.dumps(data, indent=indent)
-    new_path.write_text(formatted_data, encoding="utf-8")
-
-
 # Get the earthquake data
 contents = path.read_text(encoding="utf-8")
 data = json.loads(contents)
+data_title = data["metadata"]["title"]
 earthquake_data = data["features"]
 
-
-# Extract the earthquake magnitudes and their locations
+# Extract earthquake locations and magnitudes
 magnitudes, longitudes, latitudes, titles = [], [], [], []
 for earthquake in earthquake_data:
-    magnitude = earthquake["properties"]["mag"]
-    title = earthquake["properties"]["title"]
-    longitude = earthquake["geometry"]["coordinates"][0]
-    latitude = earthquake["geometry"]["coordinates"][1]
-    magnitudes.append(magnitude)
-    titles.append(title)
-    longitudes.append(longitude)
-    latitudes.append(latitude)
-
+    magnitudes.append(earthquake["properties"]["mag"])
+    titles.append(earthquake["properties"]["title"])
+    longitudes.append(earthquake["geometry"]["coordinates"][0])
+    latitudes.append(earthquake["geometry"]["coordinates"][1])
 
 # Plot the earthquake magnitudes
 fig = px.scatter_geo(
@@ -41,7 +28,16 @@ fig = px.scatter_geo(
     color_continuous_scale="Viridis",
     labels={"color": "Magnitude"},
     projection="natural earth",
-    title="Global Earthquakes",
+    title=data_title,
     hover_name=titles,
 )
+
 fig.show()
+
+
+def format_json(path: Path, new_path: Path, indent: int = 4) -> str:
+    """Format JSON data and save it to a new file."""
+    contents = path.read_text(encoding="utf-8")
+    data = json.loads(contents)
+    formatted_data = json.dumps(data, indent=indent)
+    new_path.write_text(formatted_data, encoding="utf-8")
