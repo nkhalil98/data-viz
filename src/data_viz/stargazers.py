@@ -1,7 +1,8 @@
+import logging
+
 import requests
 import plotly.express as px
 
-import logging
 
 logger = logging.getLogger(__name__)
 

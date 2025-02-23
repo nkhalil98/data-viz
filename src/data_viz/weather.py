@@ -1,8 +1,12 @@
 import csv
 import datetime as dt
+import logging
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+
+
+logger = logging.getLogger(__name__)
 
 WEATHER_DATA_DIR = Path(__file__).parent / "assets"
 
@@ -23,7 +27,7 @@ def get_weather_data(path):
             high = int(row[highs_col_index])
             low = int(row[lows_col_index])
         except ValueError:
-            print(f"Missing data for {row[dates_col_index]}")
+            logger.warning("Missing data for %s", row[dates_col_index])
         else:
             highs.append(high)
             lows.append(low)
@@ -50,6 +54,8 @@ def plot_weather_data(highs, lows, dates, dataset):
 
 if __name__ == "__main__":
     import argparse
+
+    logging.basicConfig(level=logging.INFO)
 
     death_vally_path = WEATHER_DATA_DIR / "death_valley_2021_simple.csv"
     sitka_path = WEATHER_DATA_DIR / "sitka_weather_2021_simple.csv"

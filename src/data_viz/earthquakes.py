@@ -3,10 +3,10 @@ from pathlib import Path
 
 import plotly.express as px
 
-path = Path(__file__).parent / "assets" / "eq_data_1_day_m1.geojson"
 
-# get the earthquake data
-contents = path.read_text(encoding="utf-8")
+EARTHQUAKES_DATA_DIR = Path(__file__).parent / "assets" / "eq_data_1_day_m1.geojson"
+
+contents = EARTHQUAKES_DATA_DIR.read_text(encoding="utf-8")
 data = json.loads(contents)
 data_title = data["metadata"]["title"]
 earthquake_data = data["features"]
@@ -19,7 +19,6 @@ for earthquake in earthquake_data:
     longitudes.append(earthquake["geometry"]["coordinates"][0])
     latitudes.append(earthquake["geometry"]["coordinates"][1])
 
-# plot the earthquake magnitudes
 fig = px.scatter_geo(
     lat=latitudes,
     lon=longitudes,
