@@ -5,13 +5,13 @@ import plotly.express as px
 
 path = Path(__file__).parent / "assets" / "eq_data_1_day_m1.geojson"
 
-# Get the earthquake data
+# get the earthquake data
 contents = path.read_text(encoding="utf-8")
 data = json.loads(contents)
 data_title = data["metadata"]["title"]
 earthquake_data = data["features"]
 
-# Extract earthquake locations and magnitudes
+# extract earthquake locations and magnitudes
 magnitudes, longitudes, latitudes, titles = [], [], [], []
 for earthquake in earthquake_data:
     magnitudes.append(earthquake["properties"]["mag"])
@@ -19,7 +19,7 @@ for earthquake in earthquake_data:
     longitudes.append(earthquake["geometry"]["coordinates"][0])
     latitudes.append(earthquake["geometry"]["coordinates"][1])
 
-# Plot the earthquake magnitudes
+# plot the earthquake magnitudes
 fig = px.scatter_geo(
     lat=latitudes,
     lon=longitudes,

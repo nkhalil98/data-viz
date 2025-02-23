@@ -1,21 +1,23 @@
 import matplotlib.pyplot as plt
 
-# Styling
+# styling
 plt.style.use("ggplot")
 
-# Data
+# data
 X = [1, 2, 3, 4, 5]  # x-values
 Y = [1, 4, 9, 16, 25]  # y-values
+# NOTE: if x-values are not provided, matplotlib will use the index of each
+# y-value as the x-value
 
-# Initialize the plot and plot the data
+# initialize the plot and plot the data
 fig, ax = plt.subplots()
-ax.plot(X, Y, linewidth=3)  # all the magic happens here
+ax.plot(X, Y, linewidth=3)
 
-# Customize the plot
-ax.set_title("Square Numbers", fontsize=24)  # title
-ax.set_xlabel("Value", fontsize=14)  # x-axis label
-ax.set_ylabel("Value Squared", fontsize=14)  # y-axis label
-ax.tick_params(axis="both", labelsize=14)  # tick labels size
+# customize the plot
+ax.set_title("Square Numbers", fontsize=24)
+ax.set_xlabel("Value", fontsize=14)
+ax.set_ylabel("Value Squared", fontsize=14)
+ax.tick_params(axis="both", labelsize=14)
 
-# Display the plot
+# display the plot
 plt.show()

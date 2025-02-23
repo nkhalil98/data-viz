@@ -19,7 +19,7 @@ logger.info(
     f"Queried {n_repos} Python repositories with more than 10,000 stars. Complete results status: {complete_results}."
 )
 
-# Extract the names and star counts of the most popular Python repositories
+# extract the names and star counts of the most popular Python repositories
 available_repos = data["items"]
 links, stars, hover_texts = [], [], []
 for repo in available_repos:
@@ -34,7 +34,6 @@ for repo in available_repos:
     stars.append(star_count)
     hover_texts.append(hover_text)
 
-# Plot the most popular Python repositories
 fig = px.bar(
     x=links,
     y=stars,

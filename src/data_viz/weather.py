@@ -9,12 +9,9 @@ WEATHER_DATA_DIR = Path(__file__).parent / "assets"
 
 def get_weather_data(path):
     """Extract high & low temperatures and their dates from a CSV file."""
-    # Read the CSV file
     lines = path.read_text().splitlines()
     reader = csv.reader(lines)
     header_row = next(reader)
-
-    # Extract high & low temperatures and their dates
     highs_col_index = header_row.index("TMAX")
     lows_col_index = header_row.index("TMIN")
     dates_col_index = header_row.index("DATE")

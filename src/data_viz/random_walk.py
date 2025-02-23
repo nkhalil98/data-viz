@@ -1,5 +1,7 @@
 import random
 
+import matplotlib.pyplot as plt
+
 
 class RandomWalk:
     """A class to generate random walks."""
@@ -33,3 +35,30 @@ class RandomWalk:
         distance = random.choice([0, 1, 2])
 
         return direction * distance
+
+
+plt.style.use("seaborn-v0_8-darkgrid")
+
+rw = RandomWalk()
+rw.fill_walk()
+
+fig, ax = plt.subplots(figsize=(10, 6), dpi=128)
+point_numbers = range(rw.n)
+ax.scatter(
+    rw.X,
+    rw.Y,
+    s=10,
+    c=point_numbers,
+    cmap=plt.cm.Blues,
+    edgecolors=None,
+)
+
+# emphasize the first and last points
+ax.scatter(0, 0, c="green", edgecolors=None, s=50)
+ax.scatter(rw.X[-1], rw.Y[-1], c="red", edgecolors=None, s=50)
+
+ax.set_aspect("equal")  # aspect ratio
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+
+plt.show()
