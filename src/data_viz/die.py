@@ -8,7 +8,9 @@ class Die:
 
     def __init__(self, num_sides=6):
         self.num_sides = num_sides
-        self.name = f"D{num_sides}"
+
+    def __str__(self):
+        return f"D{self.num_sides}"
 
     def roll(self):
         """Return a random value between 1 and the number of sides."""
@@ -24,7 +26,7 @@ fig = px.bar(
     x=possible_values,
     y=frequencies,
     labels={"x": "Value", "y": "Frequency"},
-    title=f"Results of rolling one {die.name} 10,000 times",
+    title=f"Results of rolling one {die} 10,000 times",
 )
 fig.update_layout(xaxis_dtick=1)
 
